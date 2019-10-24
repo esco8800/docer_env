@@ -1,0 +1,12 @@
+.idea/
+
+.env
+
+/percona/data*
+!.gitkeep
+
+/percona/log*
+!.gitkeep
+
+/pgdata/*
+!.gitkeep

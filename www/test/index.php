@@ -1,2 +1,2 @@
 <?php
-echo 'привет';
+echo phpinfo();
