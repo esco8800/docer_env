@@ -1,0 +1,68 @@
+# Версия docker-compose
+version: '2'
+# Список наших сервисов (контейнеров)
+services:
+
+  nginx:
+    container_name: docker_nginx
+    # используем последний стабильный образ nginx
+    image: nginx:latest
+    # маршрутизируем порты
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - php
+    # монтируем директории, слева директории на основной машине, справа - куда они монтируются в контейнере
+    volumes:
+      - ./hosts:/etc/nginx/conf.d
+      - ../www:/var/www
+      - ./logs:/var/log/nginx
+    networks:
+      - ng-proxy
+
+
+  php:
+    container_name: docker_php
+    # у нас свой образ для PHP, указываем путь к нему и говорим что его надо собрать
+    build: ./images/php
+    volumes:
+      - ../www:/var/www
+    networks:
+      - ng-proxy
+
+
+  # Percona (MySQL) Server
+  percona-5-7:
+    image: percona/percona-server:5.7
+    container_name: perconaserver-5-7
+    restart: always
+    volumes:
+      - ./percona/data:/var/lib/mysql
+      - ./percona/log:/var/log/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=Percona-5-7
+    ports:
+      - 3306:3306
+    networks:
+      - ng-proxy
+
+
+  # PhpMyAdmin service for Percona DBMS management
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin:4.7
+    container_name: phpmyadmin-4-7
+    restart: always
+    environment:
+      - PMA_HOST=perconaserver-5-7
+    depends_on:
+      - percona-5-7
+    ports:
+      - 8090:80
+    networks:
+      - ng-proxy
+
+# Создание сети
+networks:
+  ng-proxy:
+    driver: bridge

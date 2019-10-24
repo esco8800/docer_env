@@ -1,0 +1,4 @@
+2019/10/19 08:33:21 [error] 6#6: *2 open() "/var/www/shop/favicon.ico" failed (2: No such file or directory), client: 172.21.0.1, server: shop.local, request: "GET /favicon.ico HTTP/1.1", host: "localhost", referrer: "http://localhost/"
+2019/10/19 08:34:48 [error] 6#6: *5 open() "/var/www/shop/favicon.ico" failed (2: No such file or directory), client: 172.21.0.1, server: shop.local, request: "GET /favicon.ico HTTP/1.1", host: "shop.local", referrer: "http://shop.local/"
+2019/10/19 08:38:53 [error] 6#6: *10 open() "/var/www/shop/favicon.ico" failed (2: No such file or directory), client: 172.21.0.1, server: shop.local, request: "GET /favicon.ico HTTP/1.1", host: "test.local", referrer: "http://test.local/"
+2019/10/19 08:39:19 [error] 6#6: *13 open() "/var/www/shop/favicon.ico" failed (2: No such file or directory), client: 172.21.0.1, server: shop.local, request: "GET /favicon.ico HTTP/1.1", host: "www.yii", referrer: "http://www.yii/"
