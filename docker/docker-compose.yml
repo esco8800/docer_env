@@ -9,8 +9,8 @@ services:
     image: nginx:latest
     # маршрутизируем порты
     ports:
-      - "80:80"
-      - "443:443"
+      - 80:80
+#      - 443:443
     depends_on:
       - php
     # монтируем директории, слева директории на основной машине, справа - куда они монтируются в контейнере
@@ -19,7 +19,7 @@ services:
       - ../www:/var/www
       - ./logs:/var/log/nginx
     networks:
-      - ng-proxy
+      - ng-link
 
 
   php:
@@ -29,40 +29,38 @@ services:
     volumes:
       - ../www:/var/www
     networks:
-      - ng-proxy
+      - ng-link
 
 
-  # Percona (MySQL) Server
-  percona-5-7:
-    image: percona/percona-server:5.7
-    container_name: perconaserver-5-7
-    restart: always
+  # MySQL сервер
+  mysql:
+    image: mysql:5.7
+    container_name: mysql
     volumes:
-      - ./percona/data:/var/lib/mysql
-      - ./percona/log:/var/log/mysql
-    environment:
-      - MYSQL_ROOT_PASSWORD=Percona-5-7
+      - ./mysql/data:/var/lib/mysql
     ports:
       - 3306:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
     networks:
-      - ng-proxy
+      - ng-link
 
 
   # PhpMyAdmin service for Percona DBMS management
   phpmyadmin:
-    image: phpmyadmin/phpmyadmin:4.7
-    container_name: phpmyadmin-4-7
+    image: phpmyadmin/phpmyadmin:latest
+    container_name: phpmyadmin
     restart: always
     environment:
-      - PMA_HOST=perconaserver-5-7
+      - PMA_HOST=mysql
     depends_on:
-      - percona-5-7
+      - mysql
     ports:
       - 8090:80
     networks:
-      - ng-proxy
+      - ng-link
 
 # Создание сети
 networks:
-  ng-proxy:
+  ng-link:
     driver: bridge

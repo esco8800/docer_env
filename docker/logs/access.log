@@ -14,3 +14,6 @@
 172.21.0.1 - - [19/Oct/2019:08:54:15 +0000] "GET / HTTP/1.1" 200 91536 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36"
 172.21.0.1 - - [19/Oct/2019:08:54:28 +0000] "GET / HTTP/1.1" 200 22 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36"
 172.22.0.1 - - [23/Oct/2019:20:47:23 +0000] "GET / HTTP/1.1" 200 22 "-" "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36"
+172.23.0.1 - - [24/Oct/2019:07:28:35 +0000] "GET / HTTP/1.1" 200 97549 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36"
+172.23.0.1 - - [24/Oct/2019:07:28:35 +0000] "GET /favicon.ico HTTP/1.1" 404 555 "http://test.local/" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36"
+172.23.0.1 - - [24/Oct/2019:07:53:20 +0000] "GET / HTTP/1.1" 200 97549 "-" "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.120 Safari/537.36"
