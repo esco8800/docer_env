@@ -2,6 +2,6 @@
 
 .env
 
-/mysql/data*
+docker/mysql/data
 
 !.gitkeep
