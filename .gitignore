@@ -2,11 +2,6 @@
 
 .env
 
-/percona/data*
-!.gitkeep
+/mysql/data*
 
-/percona/log*
-!.gitkeep
-
-/pgdata/*
 !.gitkeep
